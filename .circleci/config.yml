@@ -71,47 +71,8 @@ jobs:
             pip install --user tox
             tox -e py38
 
-  test_ml_api_py36:
-    docker:
-      - image: circleci/python:3.6.9
-    working_directory: ~/project/packages/ml_api
-    steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: Run API tests with Python 3.6
-          command: |
-            sudo pip install --upgrade pip
-            pip install --user tox
-            tox -e py36
 
-  test_ml_api_py37:
-    docker:
-      - image: circleci/python:3.7.6
-    working_directory: ~/project/packages/ml_api
-    steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: Run API tests with Python 3.7
-          command: |
-            sudo pip install --upgrade pip
-            pip install --user tox
-            tox -e py37
 
-  test_ml_api_py38:
-    docker:
-      - image: circleci/python:3.8.1
-    working_directory: ~/project/packages/ml_api
-    steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: Run API tests with Python 3.8
-          command: |
-            sudo pip install --upgrade pip
-            pip install --user tox
-            tox -e py38
 
   train_and_upload_regression_model:
     <<: *defaults
@@ -135,24 +96,6 @@ jobs:
             . venv/bin/activate
             chmod +x ./scripts/publish_model.sh
             ./scripts/publish_model.sh ./packages/regression_model/
-
-  section_9_differential_tests:
-    <<: *defaults
-    steps:
-      - checkout
-      - *prepare_venv
-      - run:
-          name: Capturing previous model predictions
-          command: |
-            . venv/bin/activate
-            pip install -r packages/ml_api/diff_test_requirements.txt
-            PYTHONPATH=./packages/ml_api python3 packages/ml_api/tests/capture_model_predictions.py
-      - run:
-          name: Runnning differential tests
-          command: |
-            . venv/bin/activate
-            pip install -r packages/ml_api/requirements.txt
-            py.test -vv packages/ml_api/tests -m differential
 
   deploy_to_heroku:
     <<: *defaults
