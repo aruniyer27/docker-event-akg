@@ -111,7 +111,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-      - run: docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
+          docker_layer_caching: true
+      - run: docker login --username=$HEROKU_EMAIL --password-stdin=$HEROKU_API_KEY registry.heroku.com
       - run:
           name: Setup Heroku CLI
           command: |
@@ -130,14 +131,14 @@ jobs:
     working_directory: ~/project/packages/ml_models
     steps:
       - checkout
-      - setup_remote_docker
+    #  - setup_remote_docker
       - run:
-          name: Publishing docker image to aws ECR
+          name: Publishing docker image to Artifactory
           command: |
-            sudo pip install awscli
-            eval $(aws ecr get-login --no-include-email --region us-east-1)
+            curl -fL https://getcli.jfrog.io | sh
+            #eval $(aws ecr get-login --no-include-email --region us-east-1)
             make build-ml-api-aws tag-ml-api push-ml-api-aws
-            aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
+            #aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
 
 
 workflows:
@@ -161,18 +162,19 @@ workflows:
             branches:
               only:
                 - main
-      - build_and_push_to_heroku_docker:
+      - deploy_to_heroku:
+          requires:
+            - train_and_upload_regression_model
+          filters:
+            branches:
+              only:
+               - main
+
+      - publish_docker_image_to_aws:
           requires:
             - train_and_upload_regression_model
           filters:
             branches:
               only:
                 - main
-      # - publish_docker_image_to_aws:
-      #     requires:
-      #       - train_and_upload_regression_model
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
 
