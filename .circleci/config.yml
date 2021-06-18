@@ -132,6 +132,7 @@ jobs:
     steps:
       - checkout
     #  - setup_remote_docker
+      - run: docker login arunkg27.jfrog.io/artifactory/docker-akg/
       - run:
           name: Publishing docker image to Artifactory
           command: |
