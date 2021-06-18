@@ -243,9 +243,9 @@ workflows:
             - test_regression_model_py36
             - test_regression_model_py37
             - test_regression_model_py38
-            - test_ml_api_py36
-            - test_ml_api_py37
-            - section_9_differential_tests
+      #      - test_ml_api_py36
+      #      - test_ml_api_py37
+      #      - section_9_differential_tests
           filters:
             branches:
               only:
