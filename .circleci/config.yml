@@ -72,8 +72,6 @@ jobs:
             tox -e py38
 
 
-
-
   train_and_upload_regression_model:
     <<: *defaults
     steps:
