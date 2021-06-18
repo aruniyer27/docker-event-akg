@@ -14,7 +14,7 @@ DESCRIPTION = 'Regression model Train In Data"'
 URL = 'https://github.com/aruniyer27/docker-event-akg'
 EMAIL = 'XXXX@gmail.com.com'
 AUTHOR = 'ArunData'
-REQUIRES_PYTHON = '>=3.8.0'
+REQUIRES_PYTHON = '>=3.6.0'
 
 
 # Packages that are required for this module to be executed
