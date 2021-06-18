@@ -12,7 +12,7 @@ build-ml-api-aws:
 	docker build --build-arg JFROG_URL="https://arunkg27.jfrog.io/artifactory/docker-akg/" -t $(NAME):latest .
 
 push-ml-api-aws:
-	docker push ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/$(NAME):latest
+	docker push DockerEvent/$(NAME):latest
 
 tag-ml-api:
-	docker tag $(NAME):$(COMMIT_ID) ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/$(NAME):latest
+	docker tag $(NAME):$latest DockerEvent/$(NAME):latest
