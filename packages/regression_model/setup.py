@@ -10,10 +10,10 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = 'regression_model'
-DESCRIPTION = 'Regression model for using in the Train In Data online course "Deployment of Machine Learning Models".'
-URL = 'https://github.com/trainindata/deploying-machine-learning-models'
-EMAIL = 'christopher.samiullah@protonmail.com'
-AUTHOR = 'ChristopherGS'
+DESCRIPTION = 'Regression model for using in the Train In Data".'
+URL = 'https://github.com/aruniyer27/docker-event-akg'
+EMAIL = 'xxx@protonmail.com'
+AUTHOR = 'docker-event'
 REQUIRES_PYTHON = '>=3.6.0'
 
 
@@ -65,11 +65,9 @@ setup(
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
-    license='BSD 3',
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
