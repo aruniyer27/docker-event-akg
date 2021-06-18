@@ -10,9 +10,9 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = 'regression_model'
-DESCRIPTION = 'Regression model Train In Data"'
+DESCRIPTION = 'ArunKG - MLOPS Project for Docker Event'
 URL = 'https://github.com/aruniyer27/docker-event-akg'
-EMAIL = 'XXXX@gmail.com.com'
+EMAIL = 'XXXX@gmail.com'
 AUTHOR = 'ArunData'
 REQUIRES_PYTHON = '>=3.6.0'
 
