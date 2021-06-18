@@ -1,4 +1,4 @@
-NAME=docker-ml-api
+NAME=docker-event-akg
 
 
 
