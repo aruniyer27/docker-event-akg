@@ -169,13 +169,13 @@ workflows:
             branches:
               only:
                - main
-#      - build_and_push_to_heroku_docker:
-#          requires:
-#            - train_and_upload_regression_model
-#          filters:
-#            branches:
-#              only:
-#                - master
+      - build_and_push_to_heroku_docker:
+          requires:
+            - train_and_upload_regression_model
+          filters:
+            branches:
+              only:
+                - main
       # - publish_docker_image_to_aws:
       #     requires:
       #       - train_and_upload_regression_model
