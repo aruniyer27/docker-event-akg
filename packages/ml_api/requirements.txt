@@ -1,4 +1,4 @@
---extra-index-url=${PIP_EXTRA_INDEX_URL}
+--extra-index-url=${JFROG_URL}
 
 # api
 flask>=1.1.1,<1.2.0
