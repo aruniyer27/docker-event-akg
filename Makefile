@@ -3,10 +3,10 @@ NAME=docker-event-akg
 
 
 build-ml-api-heroku:
-	docker build --build-arg JFROG_URL="https://arunkg27.jfrog.io/artifactory/docker-akg/" -t registry.heroku.com/$(NAME)/web .
+	docker build --build-arg JFROG_URL="https://arunkg27.jfrog.io/artifactory/docker-akg/" -t $(NAME):latest .
 
 push-ml-api-heroku:
-	docker push registry.heroku.com/${HEROKU_APP_NAME}/web:latest
+	docker push $(NAME):latest
 
 build-ml-api-aws:
 	docker build --build-arg JFROG_URL="https://arunkg27.jfrog.io/artifactory/docker-akg/" -t $(NAME):latest .
