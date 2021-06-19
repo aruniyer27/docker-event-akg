@@ -123,7 +123,7 @@ jobs:
       - run:
           name: Release to Heroku
           command: |
-            #heroku container:release web --app $HEROKU_APP_NAME
+            heroku container:release web --app $HEROKU_APP_NAME
 
   publish_docker_image_to_artifactory1:
     <<: *defaults
