@@ -106,7 +106,7 @@ jobs:
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
-  build_and_push_to_heroku_docker:
+  publish_docker_image_to_artifactory:
     <<: *defaults
     steps:
       - checkout
@@ -125,7 +125,7 @@ jobs:
           command: |
             #heroku container:release web --app $HEROKU_APP_NAME
 
-  publish_docker_image_to_artifactory:
+  publish_docker_image_to_artifactory1:
     <<: *defaults
     working_directory: ~/project/packages/ml_models
     steps:
@@ -170,13 +170,6 @@ workflows:
               #only:
                #- main
 
-      - build_and_push_to_heroku_docker:
-          requires:
-            - train_and_upload_regression_model
-          filters:
-            branches:
-              only:
-                - main
       - publish_docker_image_to_artifactory:
           requires:
             - train_and_upload_regression_model
@@ -184,4 +177,5 @@ workflows:
             branches:
               only:
                 - main
+    
 
