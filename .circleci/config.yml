@@ -147,17 +147,16 @@ workflows:
     jobs:
   #    - test_regression_model_py36
   #    - test_regression_model_py37
-  #    - test_regression_model
-  #    - differential_tests
+      - test_regression_model
+      - differential_tests
       - test_ml_api
    #   - test_ml_api_py36
    #   - test_ml_api_py37
-      # - test_ml_api_py38 pending NN model update
       - train_and_upload_regression_model:
           requires:
-            #- test_regression_model
+            - test_regression_model
             - test_ml_api
-            #- differential_tests
+            - differential_tests
           filters:
             branches:
               only:
