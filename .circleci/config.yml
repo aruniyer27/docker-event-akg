@@ -111,7 +111,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-      - run: docker login --username=$HEROKU_EMAIL --password-stdin=$HEROKU_API_KEY registry.heroku.com
+      - run: docker login arunkg27.jfrog.io/artifactory/docker-akg/ -u "arunkg" -p $JPD_PASSWD
       - run:
           name: Setup Heroku CLI
           command: |
@@ -123,7 +123,7 @@ jobs:
       - run:
           name: Release to Heroku
           command: |
-            heroku container:release web --app $HEROKU_APP_NAME
+            #heroku container:release web --app $HEROKU_APP_NAME
 
   publish_docker_image_to_artifactory:
     <<: *defaults
