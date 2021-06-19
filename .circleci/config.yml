@@ -126,7 +126,7 @@ jobs:
           command: |
             heroku container:release web --app $HEROKU_APP_NAME
 
-  publish_docker_image_to_aws:
+  publish_docker_image_to_artifactory:
     <<: *defaults
     working_directory: ~/project/packages/ml_models
     steps:
@@ -173,7 +173,7 @@ workflows:
               only:
                - main
 
-      - publish_docker_image_to_aws:
+      - publish_docker_image_to_artifactory:
           requires:
             - train_and_upload_regression_model
           filters:
