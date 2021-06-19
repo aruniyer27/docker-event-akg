@@ -138,8 +138,6 @@ jobs:
           command: |
             curl -fL https://getcli.jfrog.io | sh
             #eval $(aws ecr get-login --no-include-email --region us-east-1)
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
-            sudo service docker start
             make build-ml-api-aws tag-ml-api push-ml-api-aws
             #aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
 
