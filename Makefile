@@ -1,4 +1,4 @@
-NAME=docker-event-akg
+NAME=docker-ml-api
 VER=2.0
 
 
